@@ -41,16 +41,17 @@ export function Hero() {
           <p className="rise mt-5 max-w-md text-lg text-cream/90" style={{ animationDelay: "0.5s" }}>
             Mirá el menú y pedí por WhatsApp. Abrimos desde las 20:00.
           </p>
-          <div className="rise mt-8 flex flex-wrap gap-3" style={{ animationDelay: "0.65s" }}>
+          <div className="rise mt-8 flex flex-wrap items-center gap-3" style={{ animationDelay: "0.65s" }}>
             <a href="#menu" className="inline-flex min-h-12 items-center rounded-full bg-cream px-6 font-bold text-ink transition-colors hover:bg-rush">
               Ver menú
             </a>
-          </div>
-          <div className="rise mt-5 flex flex-wrap items-center gap-x-5 gap-y-2" style={{ animationDelay: "0.8s" }}>
-            <OpenStatus />
-            <a href="#envios" className="inline-flex min-h-11 items-center font-semibold underline underline-offset-4 hover:text-rush">
-              Ver zonas de envío
-            </a>
+            <div className="flex min-h-12 flex-col justify-center gap-0.5 rounded-2xl border border-white/20 bg-ink/70 px-4 py-2 backdrop-blur sm:flex-row sm:items-center sm:gap-3 sm:rounded-full">
+              <OpenStatus bare />
+              <span aria-hidden="true" className="hidden h-5 w-px bg-white/25 sm:block" />
+              <a href="#envios" className="text-sm font-semibold underline-offset-4 hover:text-rush hover:underline">
+                Ver zonas de envío →
+              </a>
+            </div>
           </div>
         </div>
 
