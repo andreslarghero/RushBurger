@@ -3,7 +3,6 @@ import { brand } from "@/data/brand";
 import { Bolt } from "./Bolt";
 import { HeroVideo } from "./HeroVideo";
 import { OpenStatus } from "./OpenStatus";
-import { OrderButton } from "./OrderButton";
 
 const ticker = "ALTA DOSIS DE BURGER ⚡ TAKE AWAY ⚡ DELIVERY ⚡ ";
 
@@ -46,7 +45,6 @@ export function Hero() {
             <a href="#menu" className="inline-flex min-h-12 items-center rounded-full bg-cream px-6 font-bold text-ink transition-colors hover:bg-rush">
               Ver menú
             </a>
-            <OrderButton variant="outline" />
           </div>
           <div className="rise mt-5 flex flex-wrap items-center gap-x-5 gap-y-2" style={{ animationDelay: "0.8s" }}>
             <OpenStatus />
