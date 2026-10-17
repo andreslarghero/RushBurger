@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0b0b0b;
+  --color-ink-2: #161616;
+  --color-rush: #f26a1b;
+  --color-cream: #f6eee3;
+  --font-display: var(--font-anton), "Arial Narrow", Impact, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+body { background: var(--color-ink); color: var(--color-cream); font-family: var(--font-sans); }
+:focus-visible { outline: 3px solid var(--color-cream); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+@keyframes rush-float { 0%,100% { transform: translateY(0) rotate(-1.5deg); } 50% { transform: translateY(-8px) rotate(-1.5deg); } }
+.float-slow { animation: rush-float 6s ease-in-out infinite; }
+.pb-safe { padding-bottom: calc(0.75rem + env(safe-area-inset-bottom)); }
+
+@keyframes ken-burns { from { transform: scale(1.05); } to { transform: scale(1.22) translate(-2%, -1%); } }
+.ken-burns { animation: ken-burns 22s ease-in-out infinite alternate; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+.rise { opacity: 0; animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
+
+@keyframes bolt-flash { 0%, 100% { opacity: 0.12; } 45% { opacity: 0.12; } 50% { opacity: 0.4; } 55% { opacity: 0.15; } 60% { opacity: 0.35; } }
+.bolt-flash { animation: bolt-flash 5s ease-in-out infinite; }
+
+@keyframes glow { 0%, 100% { opacity: 0.5; transform: scale(0.95); } 50% { opacity: 0.9; transform: scale(1.08); } }
+.glow { animation: glow 4s ease-in-out infinite; }
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee { animation: marquee 28s linear infinite; }
+
+@keyframes reveal-in { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+@supports (animation-timeline: view()) {
+  .reveal { animation: reveal-in linear both; animation-timeline: view(); animation-range: entry 0% entry 40%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise { opacity: 1; animation: none; }
+  .reveal, .ken-burns, .float-slow, .marquee, .bolt-flash, .glow { animation: none !important; }
+}
+
+/* Titular que se "escribe": revela de izquierda a derecha en pasos. */
+@keyframes type { to { clip-path: inset(0 0 0 0); } }
+.typewriter { display: inline-block; clip-path: inset(0 100% 0 0); animation: type var(--dur) steps(var(--n), end) var(--delay) forwards; }
+@keyframes caret { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+.typewriter-caret::after { content: ""; display: inline-block; width: 0.07em; height: 0.8em; margin-left: 0.06em; background: var(--color-rush); animation: caret 0.7s linear 2.2s 6 forwards; opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .typewriter { clip-path: none; animation: none; }
+  .typewriter-caret::after { display: none; }
+}
+
+/* Fondo del hero: negro con luces naranjas. */
+.hero-bg { background: radial-gradient(70% 60% at 80% 35%, rgba(242,106,27,0.22), transparent 70%), radial-gradient(50% 50% at 5% 100%, rgba(170,45,8,0.25), transparent 70%), linear-gradient(180deg, #0d0d0d 0%, #050505 100%); }
+.hero-orb { position: absolute; border-radius: 9999px; filter: blur(70px); will-change: transform; }
+.hero-orb-a { width: 38rem; height: 38rem; right: -8rem; top: -6rem; background: rgba(242,106,27,0.30); animation: orb-a 14s ease-in-out infinite alternate; }
+.hero-orb-b { width: 26rem; height: 26rem; left: -6rem; bottom: -6rem; background: rgba(200,50,10,0.28); animation: orb-b 18s ease-in-out infinite alternate; }
+.hero-orb-c { width: 18rem; height: 18rem; left: 40%; top: 10%; background: rgba(255,140,60,0.14); animation: orb-c 22s ease-in-out infinite alternate; }
+.hero-streak { position: absolute; inset: -20% -10%; background: linear-gradient(115deg, transparent 42%, rgba(255,255,255,0.045) 50%, transparent 58%); animation: streak 9s ease-in-out infinite alternate; }
+@keyframes orb-a { to { transform: translate(-6rem, 5rem) scale(1.12); } }
+@keyframes orb-b { to { transform: translate(7rem, -4rem) scale(1.2); } }
+@keyframes orb-c { to { transform: translate(-8rem, 6rem) scale(0.85); } }
+@keyframes streak { from { transform: translateX(-8%); } to { transform: translateX(8%); } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb, .hero-streak { animation: none !important; }
+}
